@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!--diferentes géneros-->
+    <xs:element name="genere">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="classica"/>
+                <xs:enumeration value="jazz"/>
+                <xs:enumeration value="blues"/>
+                <xs:enumeration value="gospel"/>
+                <xs:enumeration value="soul"/>
+                <xs:enumeration value="pop"/>
+                <xs:enumeration value="rock"/>
+                <xs:enumeration value="country"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <!--miembro-->
+    <xs:element name="miembro">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nombre" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="sexo" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="home"/>
+                        <xs:enumeration value="dona"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <!--lista de miembros del grupo-->
+    <xs:element name="miembros">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="miembro" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--canción-->
+    <xs:element name="cancion">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="titulo_cancion" type="xs:string"/>
+                <xs:element name="duracion_cancion" type="xs:decimal"/>
+            </xs:sequence>
+            <xs:attribute name="numero" type="xs:positiveInteger" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!--lista de canciones-->
+    <xs:element name="titulos_canciones">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="cancion" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--single-->
+    <xs:element name="single">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="titulo" type="xs:string"/>
+                <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+                <xs:element name="pais" type="xs:string"/>
+                <xs:element name="idioma" type="xs:string"/>
+                <xs:element ref="genere" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="grupo" type="xs:string"/>
+                <xs:element ref="miembros"/>
+                <xs:element name="duracion" type="xs:decimal"/>
+            </xs:sequence>
+            <xs:attribute name="codi" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!--álbum-->
+    <xs:element name="album">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="titulo" type="xs:string"/>
+                <xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+                <xs:element name="pais" type="xs:string"/>
+                <xs:element name="idioma" type="xs:string"/>
+                <xs:element ref="genere" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="grupo" type="xs:string"/>
+                <xs:element ref="miembros"/>
+                <xs:element name="numero_canciones" type="xs:positiveInteger"/>
+                <xs:element ref="titulos_canciones"/>
+            </xs:sequence>
+            <xs:attribute name="codi" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!--catálogo-->
+    <xs:element name="catalogo">
+        <xs:complexType>
+            <xs:sequence maxOccurs="unbounded">
+                <xs:choice>
+                    <xs:element ref="single"/>
+                    <xs:element ref="album"/>
+                </xs:choice>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

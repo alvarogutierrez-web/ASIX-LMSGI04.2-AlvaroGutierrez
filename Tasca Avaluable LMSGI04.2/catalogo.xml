@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--documento XML del catálogo de canciones-->
+<catalogo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="catalogo.xsd">
+
+    <!--single-->
+    <single codi="S001">
+        <titulo>Summer Nights</titulo>
+        <descripcion>Single pop internacional</descripcion>
+        <pais>España</pais>
+        <idioma>Español</idioma>
+        <genere>pop</genere>
+        <grupo>Los Veranos</grupo>
+
+        <!--miembros-->
+        <miembros>
+            <miembro sexo="home">
+                <nombre>Carlos Ruiz</nombre>
+            </miembro>
+            
+            <miembro sexo="dona">
+                <nombre>Ana López</nombre>
+            </miembro>    
+        </miembros>
+        
+        <!--duración del single en minutos-->
+        <duracion>3.5</duracion>
+    </single>
+
+
+    <!--álbum-->
+    <album codi="A001">
+        <titulo>Greatest Hits</titulo>
+        <pais>USA</pais>
+        <idioma>Inglés</idioma>
+        <genere>rock</genere>
+        <grupo>The Rockers</grupo>
+
+        <!--miembros del grupo-->
+        <miembros>
+            <miembro sexo="home">
+                <nombre>John Smith</nombre>
+            </miembro>
+        </miembros>
+
+        <!--número de canciones del álbum-->
+        <numero_canciones>2</numero_canciones>
+
+        <!--lista de canciones del álbum-->
+        <titulos_canciones>
+            <cancion numero="1">
+                <titulo_cancion>Rock Anthem</titulo_cancion>
+                <duracion_cancion>4.2</duracion_cancion>
+            </cancion>
+
+            <cancion numero="2">
+                <titulo_cancion>Slow Rock</titulo_cancion>
+                <duracion_cancion>5.0</duracion_cancion>
+            </cancion>
+        </titulos_canciones>
+    </album>
+</catalogo>
